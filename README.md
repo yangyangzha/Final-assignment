@@ -67,3 +67,39 @@ Together, these technologies and techniques enable the creation of interactive, 
 
 ## Setup
 From the part of setup first I need to use vscode to run the basic p5.js file,then change the sketch.js replace it with our team project.To run my setup I need to go to HTML page and click go live to see the prototype is the right one or need further adjusts.
+
+Original sketch.js:
+Variable Initialization:
+colors: An array to store random RGB color values.
+deviations: An array to store random values that will be used to create variations in the sizes of concentric circles.
+coordinates: An array to store the positions of circles that will be drawn on the canvas.
+size and radius: Variables that define the size of the canvas and the radius of the main circles.
+The setup function:
+Initializes the drawing canvas to a size of 1000x1000 pixels.
+Populates the colors array with 500 sets of random RGB colors.
+Stores random deviation values in the deviations array.
+Calculates and stores the positions for each circle in a staggered grid layout.
+The draw function:
+Sets the orientation and position of the canvas.
+Sets a dark blue background.
+Renders each circle at its respective coordinates by calling drawCircle.
+drawCircle function (First Declaration):
+Contains code to draw a single circle with various visual features, such as a main circle, a central circle, concentric rings with deviations, and additional decorative elements like dashed circles, zigzag lines, and petal-like designs. The decorative elements are conditionally applied based on the circle's index.
+There are two declarations of the drawCircle function, and it seems like the second one (described below) is meant to override the first.
+drawCircle function (Second Declaration):
+This version of the drawCircle function includes additional dynamics such as rotation and scaling based on Perlin noise, giving each circle a unique, time-varying transformation that creates a more complex and animated visual effect.
+This second declaration seems to replace the first one, suggesting that the code may have been modified to add these effects after the initial implementation.
+Helper Functions:
+dashedCircle: Draws circles with dashed lines, used for decorating.
+circleLine: Draws zigzag lines around a circle for a sawtooth pattern effect.
+drawPetal: Draws petal-like features with Bezier curves for decorative purposes.
+
+Sketch2.js:
+I add more elements listed below:
+Background color change: I introduced a changing background color that gradually transitions across a spectrum. This is done by mapping the Perlin noise value to a range that represents colors.
+Circle movement and size change: The position and size of the circles are altered based on Perlin noise, which means that each circle moves and changes size independently from frame to frame, giving the artwork an organic feel.
+Petal effect: The ‘petal’ like structures around the circles are created by manipulating the vertices around each circle using Perlin noise. This adds another layer of complexity and visual interest to the piece.
+
+sketch3.js:
+The background color now slowly changes over time using Perlin noise to generate RGB values, creating a gentle transition effect.Circle positions now have a slight, noise-based offset that changes over time, giving the appearance that they are drifting. Each circle now in sketch3.js rotates and scales independently. The rotation and scale are both based on Perlin noise, which causes them to change smoothly over time, creating a pulsing and spinning effect.
+The petals now change their curvature based on Perlin noise, and their colors shift over time, which makes the petals look like they are 'breathing' and changing colors organically.
