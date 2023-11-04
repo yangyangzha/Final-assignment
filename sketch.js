@@ -158,27 +158,31 @@ function drawPetal(currentRadius) {
   stroke(236, 65, 87);
   bezier(0, 0, -currentRadius / ratio, currentRadius, currentRadius / ratio, currentRadius, currentRadius / ratio, currentRadius);
 }
+
+
 function drawCircle(x, y, index) {
   push(); // Start a new drawing state
   translate(x, y); // Move to the position of the circle
-  
-  // Calculate an angle using Perlin noise for rotation
-  let angle = noise(index * 0.1, frameCount * 0.01) * TWO_PI;
+
+  // Calculate an angle using Perlin noise for a smooth rotational effect
+  let noiseFactor = frameCount * 0.01 + index * 0.1; // Create a unique noise factor for each circle
+  let angle = noise(noiseFactor) * TWO_PI; // Map the noise value to a full rotation
   rotate(angle); // Apply the rotation
-  
-  // Calculate a scale factor using Perlin noise for size oscillation
-  let scaleSize = noise(index * 0.05, frameCount * 0.01) * 0.5 + 0.75; // Oscillates between 0.75 and 1.25
-  scale(scaleSize); // Apply the scaling
-  
+
+  // Calculate a scaling factor using Perlin noise for a pulsing effect
+  let scaleNoiseFactor = frameCount * 0.01 + index * 0.05; // Slightly different factor for variation
+  let scaleSize = noise(scaleNoiseFactor) * 0.5 + 0.75; // Oscillates between 0.75 and 1.25
+  scale(scaleSize); // Apply the scaling to make the circle grow and shrink over time
+
   // Draw the main circle
   noStroke();
   fill(colors[index * 10]);
   circle(0, 0, radius);
-  
+
   // Draw the inner circle
   fill(colors[index * 10 + 1]);
   circle(0, 0, 20);
-  
+
   // Draw the concentric circles with deviations
   for (let i = 0; i < 8; i++) {
     noFill();
@@ -187,7 +191,7 @@ function drawCircle(x, y, index) {
     ellipse(0, 0, (i + 1) * 15 + deviations[i], (i + 1) * 15 + deviations[i + 1]);
   }
 
-  // Depending on the index, draw the additional decorations
+  // Draw additional decorations depending on the index
   if (index % 4 === 0) {
     circleLine(colors[index * 10 + 10]);
   } else {
@@ -197,9 +201,76 @@ function drawCircle(x, y, index) {
     }
   }
 
+  // Only draw the petal on every second circle, and add the rolling effect
   if (index % 2 === 0) {
-    drawPetal(150);
+    let petalNoiseFactor = frameCount * 0.02 + index * 0.1; // Unique noise factor for petal rotation
+    let petalAngle = noise(petalNoiseFactor) * TWO_PI; // Map the noise value to a full rotation
+    drawPetal(150, petalAngle);
   }
-  
-  pop(); // Restore original state so the rotation and scaling doesn't affect other drawings
+
+  pop(); // Restore the original state so the rotation and scaling doesn't affect other drawings
 }
+
+
+
+
+// ... Existing setup ...
+
+// Adjust setup and draw functions if necessary
+
+function draw() {
+  // Adjust the canvas orientation and position
+  rotate(-PI / 11);
+  translate(-350, -100);
+  
+  // Using Perlin noise for the background color to make it slowly change over time
+  let bgR = noise(frameCount * 0.01) * 255;
+  let bgG = noise(1000 + frameCount * 0.01) * 255;
+  let bgB = noise(2000 + frameCount * 0.01) * 255;
+  background(bgR, bgG, bgB);
+  
+  // Render each circle at its respective coordinates with Perlin noise influence
+  for (let i = 0; i < coordinates.length; i++) {
+    // Calculate a Perlin noise-based offset for circle positions
+    let xOffset = noise(i * 0.1, frameCount * 0.01) * 20 - 10;
+    let yOffset = noise(100 + i * 0.1, frameCount * 0.01) * 20 - 10;
+    
+    drawCircle(coordinates[i][0] + xOffset, coordinates[i][1] + yOffset, i);
+  }
+}
+
+// ... drawCircle and other functions ...
+
+// Revise the drawPetal function to make petals roll using Perlin noise
+function drawPetal(currentRadius, index) {
+  const ratio = 3;
+  // Control the petal movement using Perlin noise
+  let noiseFactor = noise(index * 0.1, frameCount * 0.01) * 2 - 1; // Range from -1 to 1
+  
+  // Petal colors also change with Perlin noise
+  let petalR = noise(3000 + index * 0.1, frameCount * 0.01) * 255;
+  let petalG = noise(4000 + index * 0.1, frameCount * 0.01) * 255;
+  let petalB = noise(5000 + index * 0.1, frameCount * 0.01) * 255;
+  
+  // First petal
+  stroke(petalR, petalG, petalB);
+  strokeWeight(10);
+  noFill();
+  bezier(0, 0,
+         -currentRadius / ratio, currentRadius * noiseFactor,
+         currentRadius / ratio, currentRadius * noiseFactor,
+         0, currentRadius);
+  
+  // Rotate for variety
+  rotate(PI / 10);
+  
+  // Second petal
+  noiseFactor = noise(index * 0.1 + 5, frameCount * 0.01) * 2 - 1;
+  stroke(petalR, petalG, petalB);
+  bezier(0, 0,
+         -currentRadius / ratio, currentRadius * noiseFactor,
+         currentRadius / ratio, currentRadius * noiseFactor,
+         0, currentRadius);
+}
+
+// ... Rest of your code ...
