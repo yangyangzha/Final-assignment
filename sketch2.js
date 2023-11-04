@@ -273,4 +273,3 @@ function drawPetal(currentRadius, index) {
          0, currentRadius);
 }
 
-// ... Rest of your code ...
