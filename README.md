@@ -66,4 +66,4 @@ This entire process is client-side, meaning it runs on the user's device in thei
 Together, these technologies and techniques enable the creation of interactive, animated web content that can engage users and offer an aesthetically pleasing experience directly in their web browser without the need for plug-ins or additional software.
 
 ## Setup
-From the part of setup first I need to use vscode to run the basic p5.js file,then change the sketch.js replace it with our team project.To run my setup I need to go to HTML page and click go live to see the prototype is the right one or need further tweaks.
+From the part of setup first I need to use vscode to run the basic p5.js file,then change the sketch.js replace it with our team project.To run my setup I need to go to HTML page and click go live to see the prototype is the right one or need further adjusts.
