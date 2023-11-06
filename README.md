@@ -1,6 +1,7 @@
-# Final-assignment
+![image](https://github.com/yangyangzha/Final-assignment/assets/146388780/b97cca0a-b566-48cf-a82b-8cf09a63493f)# Final-assignment
 ## Table of contents
 * [General info](#general-info)
+* [Inspiration](#inspiration)
 * [Technologies](#technologies)
 * [Setup](#setup)
 ## General info
@@ -34,6 +35,10 @@ Perlin Noise:
 Throughout the script, Perlin noise is used to create natural, smooth transitions and variability in animation for rotation, scaling, color, and even the petal drawing functions.
 Overall, the code produces a complex, animated pattern of circles on a web page, with dynamic colors and movements that are both random and smoothly varying. It's a creative use of generative art principles with interactive features from the p5.js library.
 
+## Inspiration
+My inspiration is from "Getting Creative with Perlin Noise Fields". ![image](https://github.com/yangyangzha/Final-assignment/assets/146388780/89eb3629-d777-4cac-8a17-416433fabc11) ![image](https://github.com/yangyangzha/Final-assignment/assets/146388780/b242f08d-b30a-41e6-ac01-1b3e3990f55d)
+
+ 
 ## Technologies
 Technologies I used are listed below:
 JavaScript
