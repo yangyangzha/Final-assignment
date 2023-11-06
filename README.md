@@ -37,8 +37,10 @@ Overall, the code produces a complex, animated pattern of circles on a web page,
 
 ## Inspiration
 My inspiration is from "Getting Creative with Perlin Noise Fields". ![image](https://github.com/yangyangzha/Final-assignment/assets/146388780/89eb3629-d777-4cac-8a17-416433fabc11) ![image](https://github.com/yangyangzha/Final-assignment/assets/146388780/b242f08d-b30a-41e6-ac01-1b3e3990f55d)
-
- 
+https://sighack.com/post/getting-creative-with-perlin-noise-fields
+Perlin noise generates patterns that are continuous, meaning that close points produce close noise values. This continuity results in noise patterns that look smooth and natural to the eye.
+It can also produce patterns that loop seamlessly, which is crucial for creating repetitive background textures, cyclic elements in animations, or boundless maps.
+Perlin noise excels at simulating randomness and irregularities found in nature, especially in the painting our team was chosen,unique visual effects and animations can be created around each circles and lines to make it look more energetic by combine multiple noise sources and alter specific parameters of the noise to generate colourful effects in constantly changing animations
 ## Technologies
 Technologies I used are listed below:
 JavaScript
